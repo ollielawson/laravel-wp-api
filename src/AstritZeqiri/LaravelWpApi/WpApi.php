@@ -1,11 +1,15 @@
-<?php namespace Threesquared\LaravelWpApi;
+<?php 
+
+namespace AstritZeqiri\LaravelWpApi;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Traits\Macroable;
 use GuzzleHttp\Exception\RequestException;
 
 class WpApi
 {
-
+    use Macroable;
+    
     /**
      * Guzzle client
      * @var Client

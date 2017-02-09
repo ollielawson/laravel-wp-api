@@ -1,7 +1,9 @@
-<?php namespace Threesquared\LaravelWpApi\Facades;
+<?php 
+
+namespace AstritZeqiri\LaravelWpApi\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Threesquared\LaravelWpApi\WpApi as WordpressApi;
+use AstritZeqiri\LaravelWpApi\WpApi as WordpressApi;
 
 class WpApi extends Facade {
 
