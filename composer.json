@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Threesquared\\LaravelWpApi\\": "src/"
+            "AstritZeqiri\\LaravelWpApi\\": "src/"
         }
     },
     "minimum-stability": "stable"
