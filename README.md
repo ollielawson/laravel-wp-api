@@ -6,7 +6,7 @@ Laravel 5 package for the [Wordpress JSON REST API](https://github.com/WP-API/WP
 
 Simply add the following line to your `composer.json` and run install/update:
 
-    "astritzeqiri/laravel-wp-api": "~2.0"
+    "astritzeqiri/laravel-wp-api": "~2.1"
 
 ## Configuration
 
