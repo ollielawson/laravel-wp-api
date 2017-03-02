@@ -1,3 +1,5 @@
+This is a fork of threesquared/laravel-wp-api
+
 # laravel-wp-api
 
 Laravel 5 package for the [Wordpress JSON REST API](https://github.com/WP-API/WP-API)
