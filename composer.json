@@ -1,12 +1,12 @@
 {
-    "name": "astritzeqiri/laravel-wp-api",
+    "name": "jwatkin423/laravel-wp-api",
     "description": "Laravel package for the Wordpress JSON REST API",
     "keywords": ["laravel", "package", "wordpress", "API", "REST"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Ben Speakman",
-            "email": "ben@3sq.re"
+            "name": "Joseph Watkin",
+            "email": "joseph.watkin@gmail.com"
         }
     ],
     "require": {
@@ -19,8 +19,8 @@
     },
     "autoload": {
         "psr-0": {
-            "AstritZeqiri\\LaravelWpApi\\": "src/"
+            "Jwatkin423\\LaravelWpApi\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
