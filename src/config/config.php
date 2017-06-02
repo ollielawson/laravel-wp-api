@@ -1,7 +1,7 @@
 <?php
 
-return array(
+return [
 
-    'endpoint' => 'http://<WP_LOCATION>/wp-json/',
+    'endpoint' => 'http://<WP_LOCATION>/wp-json/wp/v2/',
     
-);
+];
