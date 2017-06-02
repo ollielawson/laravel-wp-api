@@ -1,6 +1,6 @@
 <?php 
 
-namespace AstritZeqiri\LaravelWpApi;
+namespace jwatkin423\LaravelWpApi;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Traits\Macroable;
@@ -46,23 +46,24 @@ class WpApi
      * Get all posts
      *
      * @param  int $page
+     * @param  array  $params
      * @return array
      */
-    public function posts($page = null)
+    public function posts($page = null, $params = [])
     {
-        return $this->get('posts', ['page' => $page]);
+        return $this->get('posts', ['page' => $page], $params);
     }
 
     /**
      * Get all pages
      *
-     * @param  int $page
+     * @param  int   $page
+     * @param  array $params
      * @return array
      */
-    public function pages($page = null)
+    public function pages($page = null, array $params = [])
     {
-        return $this->get('posts', ['type' => 'page', 'page' => $page]);
-    }
+        return $this->get('posts', ['type' => 'page', 'page' => $page], $params);    }
 
     /**
      * Get post by id
@@ -183,9 +184,10 @@ class WpApi
      *
      * @param  string $method
      * @param  array  $query
+     * @param  array  $params
      * @return array
      */
-    public function get($method, array $query = array())
+    public function get($method, array $query = array(), array $params = [])
     {
 
         try {
@@ -196,7 +198,7 @@ class WpApi
                 $query['auth'] = $this->auth;
             }
 
-            $response = $this->client->get($this->endpoint . $method, $query);
+            $response = $this->client->get($this->endpoint . $method, $query, $params);
 
             $return = [
                 'results' => json_decode((string) $response->getBody(), true),

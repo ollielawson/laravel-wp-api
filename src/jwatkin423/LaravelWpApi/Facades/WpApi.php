@@ -1,6 +1,6 @@
 <?php 
 
-namespace AstritZeqiri\LaravelWpApi\Facades;
+namespace Jwatkin423\LaravelWpApi\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use AstritZeqiri\LaravelWpApi\WpApi as WordpressApi;
