@@ -1,6 +1,6 @@
 <?php 
 
-namespace jwatkin423\LaravelWpApi;
+namespace Jwatkin423\LaravelWpApi;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Traits\Macroable;
