@@ -10,8 +10,9 @@ php:
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction --dev
-  - curl -s -L -o - https://raw.githubusercontent.com/yousan/damp/master/docker-compose.yml | sed -e 's/#      - ~\/public_html:\/var\/www\/vhosts/      - ~\/public_html:\/var\/www\/vhosts/g' | docker-compose -f - up
-  - docker-compose ps
+  - nslookup test.dev
+#  - curl -s -L -o - https://raw.githubusercontent.com/yousan/damp/master/docker-compose.yml | sed -e 's/#      - ~\/public_html:\/var\/www\/vhosts/      - ~\/public_html:\/var\/www\/vhosts/g' | docker-compose -f - up
+#  - docker-compose ps
 
 script:
  - phpunit
