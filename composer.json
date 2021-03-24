@@ -9,6 +9,16 @@
             "email": "joseph.watkin@gmail.com"
         }
     ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "rk\\LaravelWpApi\\LaravelWpApiServiceProvider"
+            ],
+            "aliases": {
+                "WpApi": "rk\\LaravelWpApi\\Facades\\WpApi"
+            }
+        }
+    },
     "require": {
         "php": "^7.4|^8.0",
         "illuminate/support": "^8.12",
