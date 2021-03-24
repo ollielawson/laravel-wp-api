@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace rk\LaravelWpApi;
 
@@ -8,22 +8,26 @@ use GuzzleHttp\Exception\RequestException;
 
 class WpApi
 {
+
     use Macroable;
-    
+
     /**
      * Guzzle client
+     *
      * @var Client
      */
     protected $client;
 
     /**
      * WP-WPI endpoint URL
+     *
      * @var string
      */
     protected $endpoint;
 
     /**
      * Auth headers
+     *
      * @var string
      */
     protected $auth;
@@ -45,8 +49,8 @@ class WpApi
     /**
      * Get all posts
      *
-     * @param  int $page
-     * @param  array  $params
+     * @param int $page
+     * @param array $params
      * @return array
      */
     public function posts($page = null, $params = [])
@@ -57,18 +61,19 @@ class WpApi
     /**
      * Get all pages
      *
-     * @param  int   $page
-     * @param  array $params
+     * @param int $page
+     * @param array $params
      * @return array
      */
     public function pages($page = null, array $params = [])
     {
-        return $this->get('posts', ['type' => 'page', 'page' => $page], $params);    }
+        return $this->get('posts', ['type' => 'page', 'page' => $page], $params);
+    }
 
     /**
      * Get post by id
      *
-     * @param  int $id
+     * @param int $id
      * @return array
      */
     public function postId($id)
@@ -79,7 +84,7 @@ class WpApi
     /**
      * Get post by slug
      *
-     * @param  string $slug
+     * @param string $slug
      * @return array
      */
     public function post($slug)
@@ -90,7 +95,7 @@ class WpApi
     /**
      * Get page by slug
      *
-     * @param  string $slug
+     * @param string $slug
      * @return array
      */
     public function page($slug)
@@ -121,8 +126,8 @@ class WpApi
     /**
      * Get posts from category
      *
-     * @param  string $slug
-     * @param  int $page
+     * @param string $slug
+     * @param int $page
      * @return array
      */
     public function categoryPosts($slug, $page = null)
@@ -133,8 +138,8 @@ class WpApi
     /**
      * Get posts by author
      *
-     * @param  string $name
-     * @param  int $page
+     * @param string $name
+     * @param int $page
      * @return array
      */
     public function authorPosts($name, $page = null)
@@ -145,8 +150,8 @@ class WpApi
     /**
      * Get posts tagged with tag
      *
-     * @param  string $tags
-     * @param  int $page
+     * @param string $tags
+     * @param int $page
      * @return array
      */
     public function tagPosts($tags, $page = null)
@@ -157,8 +162,8 @@ class WpApi
     /**
      * Search posts
      *
-     * @param  string $query
-     * @param  int $page
+     * @param string $query
+     * @param int $page
      * @return array
      */
     public function search($query, $page = null)
@@ -169,9 +174,9 @@ class WpApi
     /**
      * Get posts by date
      *
-     * @param  int $year
-     * @param  int $month
-     * @param  int $page
+     * @param int $year
+     * @param int $month
+     * @param int $page
      * @return array
      */
     public function archive($year, $month, $page = null)
@@ -182,12 +187,12 @@ class WpApi
     /**
      * Get data from the API
      *
-     * @param  string $method
-     * @param  array  $query
-     * @param  array  $params
+     * @param string $method
+     * @param array $query
+     * @param array $params
      * @return array
      */
-    public function get($method, array $query = array(), array $params = [])
+    public function get($method, array $query = [], array $params = [])
     {
 
         try {
@@ -201,11 +206,10 @@ class WpApi
             $response = $this->client->get($this->endpoint . $method . '?' . http_build_query($query), $params);
 
             $return = [
-                'results' => json_decode((string) $response->getBody(), true, JSON_THROW_ON_ERROR),
+                'results' => json_decode((string)$response->getBody(), true, JSON_THROW_ON_ERROR),
                 'total'   => $response->getHeaderLine('X-WP-Total'),
-                'pages'   => $response->getHeaderLine('X-WP-TotalPages')
+                'pages'   => $response->getHeaderLine('X-WP-TotalPages'),
             ];
-
         } catch (RequestException $e) {
 
             $error['message'] = $e->getMessage();
@@ -218,12 +222,10 @@ class WpApi
                 'error'   => $error,
                 'results' => [],
                 'total'   => 0,
-                'pages'   => 0
+                'pages'   => 0,
             ];
-
         }
 
         return $return;
-
     }
 }
