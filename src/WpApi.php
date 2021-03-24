@@ -3,6 +3,7 @@
 namespace rk\LaravelWpApi;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 use GuzzleHttp\Exception\RequestException;
 
@@ -28,7 +29,7 @@ class WpApi
     /**
      * Auth headers
      *
-     * @var string
+     * @var mixed
      */
     protected $auth;
 
@@ -37,10 +38,16 @@ class WpApi
      *
      * @param string $endpoint
      * @param Client $client
-     * @param string $auth
+     * @param mixed $auth
      */
-    public function __construct($endpoint, Client $client, $auth = null)
+    public function __construct(string $endpoint, Client $client, $auth = null)
     {
+        // Ensure there's a trailing slash to the endpoint as there will be
+        // a path appended to it. Prevents user error for a tiny cost.
+        if (!Str::endsWith($endpoint, '/')) {
+            $endpoint .= '/';
+        }
+
         $this->endpoint = $endpoint;
         $this->client   = $client;
         $this->auth     = $auth;
@@ -53,7 +60,7 @@ class WpApi
      * @param array $params
      * @return array
      */
-    public function posts($page = null, $params = [])
+    public function posts(int $page = null, array $params = []): array
     {
         return $this->get('posts', ['page' => $page], $params);
     }
@@ -65,7 +72,7 @@ class WpApi
      * @param array $params
      * @return array
      */
-    public function pages($page = null, array $params = [])
+    public function pages(int $page = null, array $params = []): array
     {
         return $this->get('posts', ['type' => 'page', 'page' => $page], $params);
     }
@@ -76,7 +83,7 @@ class WpApi
      * @param int $id
      * @return array
      */
-    public function postId($id)
+    public function postId(int $id): array
     {
         return $this->get("posts/$id");
     }
@@ -87,7 +94,7 @@ class WpApi
      * @param string $slug
      * @return array
      */
-    public function post($slug)
+    public function post(string $slug): array
     {
         return $this->get('posts', ['filter' => ['name' => $slug]]);
     }
@@ -98,7 +105,7 @@ class WpApi
      * @param string $slug
      * @return array
      */
-    public function page($slug)
+    public function page(string $slug): array
     {
         return $this->get('posts', ['type' => 'page', 'filter' => ['name' => $slug]]);
     }
@@ -108,7 +115,7 @@ class WpApi
      *
      * @return array
      */
-    public function categories()
+    public function categories(): array
     {
         return $this->get('taxonomies/category/terms');
     }
@@ -118,7 +125,7 @@ class WpApi
      *
      * @return array
      */
-    public function tags()
+    public function tags(): array
     {
         return $this->get('taxonomies/post_tag/terms');
     }
@@ -130,7 +137,7 @@ class WpApi
      * @param int $page
      * @return array
      */
-    public function categoryPosts($slug, $page = null)
+    public function categoryPosts(string $slug, int $page = null)
     {
         return $this->get('posts', ['page' => $page, 'filter' => ['category_name' => $slug]]);
     }
@@ -142,7 +149,7 @@ class WpApi
      * @param int $page
      * @return array
      */
-    public function authorPosts($name, $page = null)
+    public function authorPosts(string $name, int $page = null)
     {
         return $this->get('posts', ['page' => $page, 'filter' => ['author_name' => $name]]);
     }
@@ -154,7 +161,7 @@ class WpApi
      * @param int $page
      * @return array
      */
-    public function tagPosts($tags, $page = null)
+    public function tagPosts(string $tags, int $page = null)
     {
         return $this->get('posts', ['page' => $page, 'filter' => ['tag' => $tags]]);
     }
@@ -166,7 +173,7 @@ class WpApi
      * @param int $page
      * @return array
      */
-    public function search($query, $page = null)
+    public function search(string $query, int $page = null)
     {
         return $this->get('posts', ['page' => $page, 'filter' => ['s' => $query]]);
     }
@@ -179,7 +186,7 @@ class WpApi
      * @param int $page
      * @return array
      */
-    public function archive($year, $month, $page = null)
+    public function archive(int $year, int $month, int $page = null)
     {
         return $this->get('posts', ['page' => $page, 'filter' => ['year' => $year, 'monthnum' => $month]]);
     }
@@ -192,18 +199,16 @@ class WpApi
      * @param array $params
      * @return array
      */
-    public function get($method, array $query = [], array $params = [])
+    public function get(string $method, array $query = [], array $params = []): array
     {
-
         try {
-
-            $query = ['query' => $query];
+            $params['query'] = $query;
 
             if ($this->auth) {
-                $query['auth'] = $this->auth;
+                $params['auth'] = $this->auth;
             }
 
-            $response = $this->client->get($this->endpoint . $method . '?' . http_build_query($query), $params);
+            $response = $this->client->get($this->endpoint . $method, $params);
 
             $return = [
                 'results' => json_decode((string)$response->getBody(), true, JSON_THROW_ON_ERROR),
@@ -211,7 +216,6 @@ class WpApi
                 'pages'   => $response->getHeaderLine('X-WP-TotalPages'),
             ];
         } catch (RequestException $e) {
-
             $error['message'] = $e->getMessage();
 
             if ($e->getResponse()) {
