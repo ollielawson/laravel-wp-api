@@ -1,6 +1,6 @@
 <?php 
 
-namespace Jwatkin423\LaravelWpApi;
+namespace rk\LaravelWpApi;
 
 use Illuminate\Support\ServiceProvider;
 

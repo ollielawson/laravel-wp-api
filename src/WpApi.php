@@ -1,6 +1,6 @@
 <?php 
 
-namespace Jwatkin423\LaravelWpApi;
+namespace rk\LaravelWpApi;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Traits\Macroable;
@@ -198,10 +198,10 @@ class WpApi
                 $query['auth'] = $this->auth;
             }
 
-            $response = $this->client->get($this->endpoint . $method, $query, $params);
+            $response = $this->client->get($this->endpoint . $method . '?' . http_build_query($query), $params);
 
             $return = [
-                'results' => json_decode((string) $response->getBody(), true),
+                'results' => json_decode((string) $response->getBody(), true, JSON_THROW_ON_ERROR),
                 'total'   => $response->getHeaderLine('X-WP-Total'),
                 'pages'   => $response->getHeaderLine('X-WP-TotalPages')
             ];

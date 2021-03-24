@@ -2,13 +2,13 @@ This is a fork of threesquared/laravel-wp-api
 
 # laravel-wp-api
 
-Laravel 5 package for the [Wordpress JSON REST API](https://github.com/WP-API/WP-API)
+Laravel 8 package for the [Wordpress JSON REST API](https://github.com/WP-API/WP-API)
 
 ## Install
 
 Simply add the following line to your `composer.json` and run install/update:
 
-    "astritzeqiri/laravel-wp-api": "~2.1"
+    "rk/laravel-wp-api": "^4.0"
 
 ## Configuration
 
@@ -16,11 +16,11 @@ You will need to add the service provider and optionally the facade alias to you
 
 ```php
 'providers' => array(
-  AstritZeqiri\LaravelWpApi\LaravelWpApiServiceProvider::class
+  rk\LaravelWpApi\LaravelWpApiServiceProvider::class
 )
 
 'aliases' => array(
-  'WpApi' => AstritZeqiri\LaravelWpApi\Facades\WpApi::class
+  'WpApi' => rk\LaravelWpApi\Facades\WpApi::class
 ),
 ```
 

@@ -1,12 +1,15 @@
-<?php 
+<?php
 
-namespace Jwatkin423\LaravelWpApi\Facades;
+namespace rk\LaravelWpApi\Facades;
 
-use Illuminate\Support\Facades\Facade;
-use Jwatkin423\LaravelWpApi\WpApi as WordpressApi;
+use rk\LaravelWpApi\WpApi as WordpressApi;
 
-class WpApi extends Facade {
+class WpApi
+{
 
-    protected static function getFacadeAccessor() { return WordpressApi::class; }
+    protected static function getFacadeAccessor()
+    {
+        return WordpressApi::class;
+    }
 
 }
