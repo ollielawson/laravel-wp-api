@@ -23,7 +23,7 @@ class LaravelWpApiServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../../config/config.php' => config_path('wp-api.php'),
-        ]);
+        ], 'config');
     }
 
     /**
