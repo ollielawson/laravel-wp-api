@@ -16,11 +16,11 @@ You will need to add the service provider and optionally the facade alias to you
 
 ```php
 'providers' => array(
-  rk\LaravelWpApi\LaravelWpApiServiceProvider::class
+  rk\LaravelWpApi\ServiceProvider::class
 )
 
 'aliases' => array(
-  'WpApi' => rk\LaravelWpApi\Facades\WpApi::class
+  'WpApi' => rk\LaravelWpApi\Facade::class
 ),
 ```
 

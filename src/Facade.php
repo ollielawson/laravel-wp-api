@@ -1,10 +1,10 @@
 <?php
 
-namespace rk\LaravelWpApi\Facades;
+namespace rk\LaravelWpApi;
 
 use rk\LaravelWpApi\WpApi as WordpressApi;
 
-class WpApi
+class Facade extends Illuminate\Support\Facades\Facade
 {
 
     protected static function getFacadeAccessor()

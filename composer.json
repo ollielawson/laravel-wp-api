@@ -12,10 +12,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "rk\\LaravelWpApi\\LaravelWpApiServiceProvider"
+                "rk\\LaravelWpApi\\ServiceProvider"
             ],
             "aliases": {
-                "WpApi": "rk\\LaravelWpApi\\Facades\\WpApi"
+                "WpApi": "rk\\LaravelWpApi\\Facade"
             }
         }
     },
