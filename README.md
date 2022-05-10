@@ -16,11 +16,11 @@ You will need to add the service provider and optionally the facade alias to you
 
 ```php
 'providers' => array(
-  ollielawson\LaravelWpApi\ServiceProvider::class
+  Vivify\LaravelWpApi\ServiceProvider::class
 )
 
 'aliases' => array(
-  'WpApi' => ollielawson\LaravelWpApi\Facade::class
+  'WpApi' => Vivify\LaravelWpApi\Facade::class
 ),
 ```
 

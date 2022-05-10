@@ -1,6 +1,6 @@
 <?php 
 
-namespace ollielawson\LaravelWpApi;
+namespace Vivify\LaravelWpApi;
 
 use Illuminate\Support\ServiceProvider as BaseProvider;
 

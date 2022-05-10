@@ -12,10 +12,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ollielawson\\LaravelWpApi\\ServiceProvider"
+                "Vivify\\LaravelWpApi\\ServiceProvider"
             ],
             "aliases": {
-                "WpApi": "ollielawson\\LaravelWpApi\\Facade"
+                "WpApi": "Vivify\\LaravelWpApi\\Facade"
             }
         }
     },
@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ollielawson\\LaravelWpApi\\": "src/"
+            "Vivify\\LaravelWpApi\\": "src/"
         }
     },
     "minimum-stability": "dev"

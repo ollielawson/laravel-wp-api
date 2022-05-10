@@ -1,8 +1,8 @@
 <?php
 
-namespace ollielawson\LaravelWpApi;
+namespace Vivify\LaravelWpApi;
 
-use ollielawson\LaravelWpApi\WpApi as WordpressApi;
+use Vivify\LaravelWpApi\WpApi as WordpressApi;
 
 class Facade extends \Illuminate\Support\Facades\Facade
 {
