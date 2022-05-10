@@ -1,5 +1,5 @@
 {
-    "name": "rk/laravel-wp-api",
+    "name": "ollielawson/laravel-wp-api",
     "description": "Laravel package for the Wordpress JSON REST API",
     "keywords": ["laravel", "package", "wordpress", "API", "REST"],
     "license": "MIT",
@@ -12,16 +12,16 @@
     "extra": {
         "laravel": {
             "providers": [
-                "rk\\LaravelWpApi\\ServiceProvider"
+                "ollielawson\\LaravelWpApi\\ServiceProvider"
             ],
             "aliases": {
-                "WpApi": "rk\\LaravelWpApi\\Facade"
+                "WpApi": "ollielawson\\LaravelWpApi\\Facade"
             }
         }
     },
     "require": {
         "php": "^7.4|^8.0",
-        "illuminate/support": "^8.12",
+        "illuminate/support": "^9",
         "guzzlehttp/guzzle": "^7.3",
         "ext-json": "*"
     },
@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "rk\\LaravelWpApi\\": "src/"
+            "ollielawson\\LaravelWpApi\\": "src/"
         }
     },
     "minimum-stability": "dev"

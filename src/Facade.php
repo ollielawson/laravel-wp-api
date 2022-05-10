@@ -1,8 +1,8 @@
 <?php
 
-namespace rk\LaravelWpApi;
+namespace ollielawson\LaravelWpApi;
 
-use rk\LaravelWpApi\WpApi as WordpressApi;
+use ollielawson\LaravelWpApi\WpApi as WordpressApi;
 
 class Facade extends \Illuminate\Support\Facades\Facade
 {

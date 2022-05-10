@@ -1,6 +1,6 @@
 <?php
 
-namespace rk\LaravelWpApi;
+namespace ollielawson\LaravelWpApi;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Str;
