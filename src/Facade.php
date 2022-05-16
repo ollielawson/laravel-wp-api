@@ -2,14 +2,14 @@
 
 namespace Vivify\LaravelWpApi;
 
-use Vivify\LaravelWpApi\WpApi as WordpressApi;
+use Vivify\LaravelWpApi\WpApi;
 
-class WpApi extends \Illuminate\Support\Facades\Facade
+class Facade extends \Illuminate\Support\Facades\Facade
 {
 
     protected static function getFacadeAccessor()
     {
-        return WordpressApi::class;
+        return WpApi::class;
     }
 
 }
