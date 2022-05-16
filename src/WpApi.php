@@ -117,7 +117,7 @@ class WpApi
      */
     public function categories(): array
     {
-        return $this->get('categories');
+        return $this->get('taxonomies/category');
     }
 
     /**
