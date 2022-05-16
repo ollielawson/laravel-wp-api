@@ -211,7 +211,7 @@ class WpApi
             $response = $this->client->get($this->endpoint . $method, $params);
 
             $return = [
-                'results' => json_decode((string)$response->getBody(), true, JSON_THROW_ON_ERROR),
+                'results' => json_decode((string)$response->getBody(), false, JSON_THROW_ON_ERROR),
                 'total'   => $response->getHeaderLine('X-WP-Total'),
                 'pages'   => $response->getHeaderLine('X-WP-TotalPages'),
             ];
