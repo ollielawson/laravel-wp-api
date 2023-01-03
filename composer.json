@@ -1,5 +1,5 @@
 {
-    "name": "ollielawson/laravel-wp-api",
+    "name": "vivify-studios/laravel-wp-api",
     "description": "Laravel package for the Wordpress JSON REST API",
     "keywords": ["laravel", "package", "wordpress", "API", "REST"],
     "license": "MIT",
