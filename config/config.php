@@ -2,6 +2,6 @@
 
 return [
 
-    'endpoint' => 'http://<WP_LOCATION>/wp-json/wp/v2/',
+    'endpoint' => 'https://<WP_LOCATION>/wp-json/wp/v2/',
     
 ];
